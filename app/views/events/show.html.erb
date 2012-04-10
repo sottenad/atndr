@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Bands:</b>
+  <%= @event.bands %>
+</p>
+
+<p>
+  <b>Time:</b>
+  <%= @event.time %>
+</p>
+
+<p>
+  <b>Location:</b>
+  <%= @event.location %>
+</p>
+
+<p>
+  <b>Latitude:</b>
+  <%= @event.latitude %>
+</p>
+
+<p>
+  <b>Longitude:</b>
+  <%= @event.longitude %>
+</p>
+
+
+<%= link_to 'Edit', edit_event_path(@event) %> |
+<%= link_to 'Back', events_path %>
