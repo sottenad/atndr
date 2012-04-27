@@ -3,7 +3,7 @@ class EventsController < ApplicationController
   # GET /events.json
   def index
     @events = Event.all
-
+	@length = @events.length
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @events }

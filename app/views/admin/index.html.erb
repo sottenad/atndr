@@ -2,3 +2,12 @@
 <form action="/admin/getshows">
 <button>Load Shows</button>
 </form>
+
+<form action="/admin/geocodeall">
+<%= link_to "GEocode", controller.geocodeall %>
+</form>
+
+<% @shows.each do |item| 
+	print item
+	end 
+	%>

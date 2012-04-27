@@ -8,6 +8,8 @@ gem 'rails', '3.2.2'
 gem 'nokogiri'
 gem 'pg'
 gem "geocoder"
+gem 'gmaps4rails'
+gem 'chronic'
 
 # Gems used only for assets and not required
 # in production environments by default.

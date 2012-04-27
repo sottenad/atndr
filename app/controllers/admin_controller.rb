@@ -1,6 +1,7 @@
 class AdminController < ApplicationController
   def index
     puts 'hi'
+    @shows = Event.all
   end
 
   def getshows
@@ -52,6 +53,7 @@ class AdminController < ApplicationController
         end
       end
     end
+
 
   def geocodeall
     Event.all.each do |obj|

@@ -1,12 +1,16 @@
 <h1>Listing events</h1>
-
+<br />
+<strong><%= @length %> events</strong>
+<br />
 <table>
   <tr>
     <th>Bands</th>
     <th>Time</th>
     <th>Location</th>
+    <th>Venue</th>
     <th>Latitude</th>
     <th>Longitude</th>
+	<th>StartTime</th>
     <th></th>
     <th></th>
     <th></th>
@@ -17,8 +21,10 @@
     <td><%= event.bands %></td>
     <td><%= event.time %></td>
     <td><%= event.location %></td>
+    <td><%= event.venue %></td>
     <td><%= event.latitude %></td>
     <td><%= event.longitude %></td>
+    <td><%= event.starttime %></td>
     <td><%= link_to 'Show', event %></td>
     <td><%= link_to 'Edit', edit_event_path(event) %></td>
     <td><%= link_to 'Destroy', event, confirm: 'Are you sure?', method: :delete %></td>
