@@ -1,4 +1,7 @@
 Atndr::Application.routes.draw do
+  get "admin/index"
+  get "admin/getshows"
+
   resources :events
 
   # The priority is based upon order of creation:
