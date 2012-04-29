@@ -21,10 +21,11 @@ class Event < ActiveRecord::Base
 		output = '';
 		
 		similar = Event.where("latitude = ? AND longitude = ?", self.latitude, self.longitude)
-		output << '<<'+similar.length.to_s+'>>'
+		output << '<span class="prevshow">&laquo;</span><span class="currentshow">1</span> of <span class="totalshows">'+similar.length.to_s+'</span><span class="nextshow">&raquo;</span>'
 		
+		output << "<div class='showDetailContainer'>"
 		similar.each_with_index do |item, i|
-			output << '<div id="item'+i.to_s+'">'
+			output << '<div class="showDetails" id="item'+i.to_s+'">'
 			output << item.bands
 			output << '<br />'
 			if(!self.starttime.nil?)
@@ -33,10 +34,9 @@ class Event < ActiveRecord::Base
 				output << item.time.to_s
 			end
 			output << '</div>'
-			
-		
-		
 		end
+		
+		output << '</div>'
 		
 
 		return output
