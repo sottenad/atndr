@@ -9,7 +9,7 @@ class MapController < ApplicationController
 
   end
 def gmaps4rails_infowindow
-  "<p>hello</p>"
+
 end
 
 end

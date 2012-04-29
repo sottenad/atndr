@@ -16,13 +16,29 @@ class Event < ActiveRecord::Base
 
 	end
 	def processInfoWindow
+
+	
 		output = '';
 		
-		if(self.starttime.length > 0)
-			output += self.starttime
-		else
-			output += self.time
+		similar = Event.where("latitude = ? AND longitude = ?", self.latitude, self.longitude)
+		output << '<<'+similar.length.to_s+'>>'
+		
+		similar.each_with_index do |item, i|
+			output << '<div id="item'+i.to_s+'">'
+			output << item.bands
+			output << '<br />'
+			if(!self.starttime.nil?)
+				output << item.starttime.to_s
+			else
+				output << item.time.to_s
+			end
+			output << '</div>'
+			
+		
+		
 		end
+		
+
 		return output
 		
 	end
