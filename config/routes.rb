@@ -1,4 +1,6 @@
 Atndr::Application.routes.draw do
+  get "getsongs/index"
+
   get "map/index"
 
   get "admin/index"

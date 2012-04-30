@@ -1,0 +1,23 @@
+<div class="infowindow<%= object.id %>">
+	<h1><%= object.venue %></h1>
+	<% if similar.length > 1 %>
+		<span class="prevshow">&laquo;</span><span class="currentshow">1</span> of <span class="totalshows"><%=similar.length.to_s%></span><span class="nextshow">&raquo;</span>
+	<% end %>
+	<div class='showDetailContainer'>
+		<% similar.each_with_index do |item, i| 
+			if i == 0 %>
+			<div class="showDetails" id="item<%=i.to_s%>'">
+			<% else %>
+			<div class="showDetails hide" id="item<%=i.to_s%>">
+			<% end %>
+			<%= item.bands %>
+			<br />
+			<% if(!item.starttime.nil?) %>
+				<%= item.starttime.to_s %>
+			<% else %>
+				<%= item.time.to_s %>
+		 	<% end %>
+		 	</div>
+		<% end %>
+	</div><!--End detailContainer-->
+</div><!--End InfoWindow-->

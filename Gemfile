@@ -10,6 +10,9 @@ gem 'pg'
 gem "geocoder"
 gem 'gmaps4rails'
 gem 'chronic'
+gem 'itunes'
+gem "rails-backbone"
+
 
 # Gems used only for assets and not required
 # in production environments by default.

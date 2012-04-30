@@ -16,4 +16,7 @@ $(function(){
 		$('.currentshow').text(currentShow+1);
 		
 	})
+	
 });
+
+
