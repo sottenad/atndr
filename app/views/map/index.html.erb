@@ -1,6 +1,8 @@
 <%= gmaps("markers" => {"data" => @json, "options" => {"list_container" => "markers_list" } }) %>
 <div id="shows">
-  <div class="header">atndr</div>
+  <div class="header">
+    <%= image_tag "ui/atndr-logo.png" %>
+  </div>
   <div id="filters">DATE MILES</div>
   <ul id="markers_list">  </ul>
 </div>
