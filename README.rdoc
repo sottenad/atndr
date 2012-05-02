@@ -5,8 +5,8 @@
 
 == Getting Started
 
-1. At the command prompt, cd to the location you git cloned this application
-		>> cd atndr
+1. At the command prompt, cd to the location you git cloned this application:
+	   cd atndr
 
 2. Start the web server:
        rails s
