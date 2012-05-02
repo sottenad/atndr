@@ -1,6 +1,6 @@
 <%= gmaps("markers" => {"data" => @json, "options" => {"list_container" => "markers_list", "auto_zoom" => false} }) %>
 <div id="shows">
-  <div class="header">atndr</div>
+  <div class="header"><%= image_tag "ui/atndr-logo.png" %></div>
   <div id="filters">
   <input type="range" id="dateFilter" min=1 max=5 /><span id="displayDateVal"></span> DATE
   <input type="range" id="distFilter" min=1 max=10 /><span id="displayDistVal"></span> MILES

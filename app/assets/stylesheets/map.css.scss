@@ -4,8 +4,15 @@
 $white: #ffffff;
 $egg: #fafafa;
 $gravy: #383c3c;
-
+$border-grey: #f0f0f0;
+$teal: #56c9cc;
+$teal-border: #3ba6aa;
 $padding: 10px;
+
+@mixin top-highlight{
+  -webkit-box-shadow: inset 0px 1px 0px 0px rgba(255, 255, 255, .15);
+  box-shadow: inset 0px 1px 0px 0px rgba(255, 255, 255, .15);
+}
 @mixin rounded($radius: 2px) {
   -webkit-border-radius: $radius;
   -moz-border-radius: $radius;
@@ -26,7 +33,7 @@ $padding: 10px;
   min-height: 500px;
   width: 355px;
   display: block;
-  overflow: scroll;
+  overflow: hidden;
   background: transparentize($white, .15);
   @include rounded;
   @include box-shadow(0px, 0px, 5px);
@@ -40,5 +47,24 @@ $padding: 10px;
     background: $gravy;
     margin-bottom: $padding/2;
     padding: $padding;
+    input[type="range"]{
+      width: 90px;
+    }
+  }
+  #markers_list{
+      overflow: scroll;
+      height: 100%;
+      padding: 0px 5px;
+  }
+  li{
+    margin: 2px;
+    padding: 5px;
+    background: $white;
+    border: 1px solid $border-grey;
+  }
+  .selected{
+    background: $teal;
+    border: 1px solid $teal-border;
+    @include top-highlight
   }
 }
