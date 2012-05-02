@@ -376,7 +376,6 @@ class @Gmaps4Rails
       ul = document.getElementById(@markers_conf.list_container)
       li = document.createElement('li')
       aSel = document.createElement('span')
-    # aSel.href = 'javascript:void(0);'
       html = if marker_container.sidebar? then marker_container.sidebar else "Marker"
       aSel.innerHTML = html
       currentMap = this
