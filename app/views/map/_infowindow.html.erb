@@ -11,6 +11,9 @@
 			<div class="showDetails hide" id="item<%=i.to_s%>">
 			<% end %>
 			<%= item.bands %>
+			<% if (!item.songs.nil?) %>
+			  <%= item.songs %>
+			<% end %>
 			<br />
 			<% if(!item.starttime.nil?) %>
 				<%= item.starttime.to_s %>
