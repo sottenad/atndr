@@ -6,6 +6,10 @@ Atndr::Application.routes.draw do
   get "admin/index"
   get "admin/getshows"
   get "admin/geocodeall"
+  
+  get "filters/index"
+  
+  get "events/truncate"
 
   resources :events
 

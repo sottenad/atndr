@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120427152929) do
+ActiveRecord::Schema.define(:version => 20120502041339) do
 
   create_table "events", :force => true do |t|
     t.text     "bands"
@@ -24,6 +24,10 @@ ActiveRecord::Schema.define(:version => 20120427152929) do
     t.string   "venue"
     t.boolean  "gmaps"
     t.datetime "starttime"
+    t.text     "songs"
+    t.text     "picture"
+    t.text     "genre"
+    t.datetime "startdate"
   end
 
 end
