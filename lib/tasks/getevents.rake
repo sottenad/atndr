@@ -27,6 +27,7 @@ task :getevents_seattle => [:environment] do
 			  songs = Array.new
 			  headliner = ''
 			  genre = Array.new
+
 				
 			  #Get the start time, and then use chronic to parse the language
 			  node.css('.listing').each do|subnode|
@@ -65,6 +66,8 @@ task :getevents_seattle => [:environment] do
 				end
 		      end
 		      
+
+		      
 		      #Now get the itunes information about the headliner (3 songs and photo)
 		      if !headliner.nil?
 		      	songQuery = ITunes.music(headliner.to_s, :limit => 3)
@@ -87,7 +90,7 @@ task :getevents_seattle => [:environment] do
 		      sleep(1)
 		      
 			  #Create new event in the DB
-			  event = Event.create(
+			  event = Event.find_or_create_by_latitude_and_longitude_and_time(
 	     	    :bands => bands,
 	  	        :time => date,
 			    :location => location,
@@ -96,10 +99,11 @@ task :getevents_seattle => [:environment] do
 		        :longitude => long,
 		        :starttime => starttime,
 				:genre => genre,
-				:songs => songs
+				:songs => songs,
+				:startdate => date
 		     )
 		     
-		     puts 'just added '+headliner
+		     puts 'added '+headliner
 
 			 end #result loop
 		else 

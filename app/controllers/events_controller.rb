@@ -37,6 +37,11 @@ class EventsController < ApplicationController
   def edit
     @event = Event.find(params[:id])
   end
+  
+  def truncate
+  	Event.destroy_all()
+  	redirect_to events_url, :notice => "Events Deleted"
+  end
 
   # POST /events
   # POST /events.json

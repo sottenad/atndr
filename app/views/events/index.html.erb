@@ -1,8 +1,14 @@
-
+<% if flash[:error] -%>
+  <p class='error'><%=h flash[:error] %></p>
+<% end -%>
+<% if flash[:notice] -%>
+  <p class='notice'><%=h flash[:notice] %></p>
+<% end -%>
 
 <h1>Listing events</h1>
 <br />
 <strong><%= @length %> events</strong>
+<%= link_to "Delete All Events", events_truncate_path, :class => 'button', :confirm => 'Please be sure, this will delete all events' %>
 <br />
 <table>
   <tr>
@@ -36,4 +42,4 @@
 
 <br />
 
-<%= link_to 'New Event', new_event_path %>
+<%= link_to 'New Event', new_event_path, :class => 'button' %>
