@@ -375,20 +375,22 @@ class @Gmaps4Rails
     if (@markers_conf.list_container)
       ul = document.getElementById(@markers_conf.list_container)
       li = document.createElement('li')
-      aSel = document.createElement('a')
-      aSel.href = 'javascript:void(0);'
+      aSel = document.createElement('span')
+    # aSel.href = 'javascript:void(0);'
       html = if marker_container.sidebar? then marker_container.sidebar else "Marker"
       aSel.innerHTML = html
       currentMap = this
-      aSel.onclick = @sidebar_element_handler(currentMap, marker_container.serviceObject, 'click')
+      li.onclick = @sidebar_element_handler(currentMap, marker_container.serviceObject, li, 'click')
       li.appendChild(aSel)
       ul.appendChild(li)
 
   #moves map to marker clicked + open infowindow
-  sidebar_element_handler : (currentMap, marker, eventType) ->
+  sidebar_element_handler : (currentMap, marker, li, eventType) ->
     return () ->
       currentMap.map.panTo(marker.position)
       google.maps.event.trigger(marker, eventType)
+      ($ li).siblings().removeClass('selected')
+      ($ li).addClass "selected"
 
 
   resetSidebarContent : ->

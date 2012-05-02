@@ -4,6 +4,10 @@
 $white: #ffffff;
 $egg: #fafafa;
 $gravy: #383c3c;
+$border-grey: #f0f0f0;
+$teal: #56c9cc;
+$teal-border: #3ba6aa;
+
 
 $padding: 10px;
 @mixin rounded($radius: 2px) {
@@ -44,5 +48,16 @@ $padding: 10px;
   #markers_list{
       overflow: scroll;
       height: 100%;
+      padding: 0px 5px;
+  }
+  li{
+    margin: 2px;
+    padding: 5px;
+    background: $white;
+    border: 1px solid $border-grey;
+  }
+  .selected{
+    background: $teal;
+    border: 1px solid $teal-border;
   }
 }
