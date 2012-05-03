@@ -11,7 +11,7 @@ class MapController < ApplicationController
  	  	 
 	end
 	
-	@events = Event.all
+	@events1 = Event.all
 
 
   end
