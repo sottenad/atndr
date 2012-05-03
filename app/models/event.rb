@@ -12,13 +12,21 @@ class Event < ActiveRecord::Base
 	end
 
 def gmaps4rails_sidebar
+
 	b = self.bands.split('|')
+	band = ''
+	
 	if b.length < 4
-		allb = b.join(',')
-		"<span>#{allb}</span>" 
+		band = b.join(',').to_s
 	else
-		shortb = b[0..2].join(',')
-		"<span>#{shortb}, and more...</span>" 
+		band = b[0..2].join(',').to_s
+		band << ', more...'
+	end
+	
+	if self.songs.nil?
+		"<span>#{band}</span>" 
+	else
+		"<span class='hassongs'>#{band}</span>" 
 	end
 end
  
