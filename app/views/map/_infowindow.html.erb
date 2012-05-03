@@ -10,11 +10,16 @@
 			<% else %>
 			<div class="showDetails hide" id="item<%=i.to_s%>">
 			<% end %>
-			<%= item.bands %>
+			
+			<%= item.bands.split('|').join(',') %>
+			<br />
 			<% if (!item.songs.nil?) %>
-			  <%= item.songs %>
+			  <% item.songs.each do |song| %>
+			  	<audio src="<%= song['songurl'] %>" controls></audio><%= song['songname'] %><br />
+			  <% end %>
 			<% end %>
 			<br />
+			<%= item.genre %><br />
 			<% if(!item.starttime.nil?) %>
 				<%= item.starttime.to_s %>
 			<% else %>

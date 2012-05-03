@@ -24,7 +24,7 @@ $(function(){
 	});
 	
 	if (navigator.geolocation) {
-	    navigator.geolocation.getCurrentPosition(successFunction, errorFunction);
+	    //navigator.geolocation.getCurrentPosition(successFunction, errorFunction);
 	} 
 	//Get the latitude and the longitude;
 	function successFunction(position) {
@@ -59,6 +59,6 @@ function updateMap(){
 		var today = new Date();
 		var cutoffDate = new Date();
 		cutoffDate.setDate(today.getDate() + parseInt(future)	);
-		$('#displayDateVal').text(cutoffDate.getMonth()+'-'+cutoffDate.getDate());
+		$('#displayDateVal').text((cutoffDate.getMonth()+1)+'-'+cutoffDate.getDate());
 		$('#displayDistVal').text(dist);
 }

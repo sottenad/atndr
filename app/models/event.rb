@@ -1,4 +1,5 @@
 class Event < ActiveRecord::Base
+	serialize :songs
 
   geocoded_by :location
   after_validation :geocode
@@ -11,18 +12,16 @@ class Event < ActiveRecord::Base
 	end
 
 def gmaps4rails_sidebar
-  "<span>#{bands}</span>" 
+	b = self.bands.split('|')
+	if b.length < 4
+		allb = b.join(',')
+		"<span>#{allb}</span>" 
+	else
+		shortb = b[0..2].join(',')
+		"<span>#{shortb}, and more...</span>" 
+	end
 end
  
-	def getiTunes
-		itunesMarkup = ''
-		itunes = ITunes::Client.new
-	  	songs = itunes.music('green day', :limit => 3)
-	  	songs.results.each do |song|
-	  	
-	  		itunesMarkup << song.preview_url + ' <br /> '
-	  	end
-	  	return itunesMarkup
-	end
+
 	
 end
