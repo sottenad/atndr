@@ -62,9 +62,18 @@ $padding: 10px;
     background: $white;
     border: 1px solid $border-grey;
   }
+  li span{
+  	display:block;
+  }
   .selected{
     background: $teal;
     border: 1px solid $teal-border;
     @include top-highlight
   }
+  .hassongs{
+  	background-image:url(/assets/headphones.png);
+  	background-position: 100% 0;
+  	background-repeat:no-repeat;
+  }
+  
 }
