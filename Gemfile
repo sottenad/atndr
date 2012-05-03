@@ -11,6 +11,7 @@ gem "geocoder"
 gem 'gmaps4rails'
 gem 'chronic'
 gem 'itunes'
+gem 'thin' #recommended by heroku for prod
 
 
 
