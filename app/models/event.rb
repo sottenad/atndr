@@ -23,7 +23,7 @@ def gmaps4rails_sidebar
 		band << ', more...'
 	end
 	
-	if self.songs.nil?
+	if self.songs.length < 1
 		"<span>#{band}</span>" 
 	else
 		"<span class='hassongs'>#{band}</span>" 
