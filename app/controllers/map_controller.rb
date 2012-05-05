@@ -3,9 +3,9 @@ class MapController < ApplicationController
 
   def index
 
-  	@json = Event.all.to_gmaps4rails do |e, marker|
-  	 similar = Event.where("latitude = ? AND longitude = ?", e.latitude, e.longitude)
-     marker.infowindow render_to_string(:partial => "/map/infowindow", :locals => { :object => e, :similar => similar})
+  	@json = Event.all.to_gmaps4rails do |event, marker|
+  	 similar = Event.where("latitude = ? AND longitude = ?", event.latitude, event.longitude)
+     marker.infowindow render_to_string(:partial => "/map/infowindow", :locals => { :object => event, :similar => similar})
 
      marker.json({ :id => event.id })
  	  	 
