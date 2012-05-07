@@ -8,7 +8,7 @@
 			<br />
 			<% if (!object.songs.nil?) %>
 			  <% object.songs.each do |song| %>
-			  	<audio src="<%= song['songurl'] %>" controls></audio><%= song['songname'] %><br />
+			  	<%= song['songname'] %>| <a href="#" class="playsong" data-songurl="<%= song['songurl'] %>" data-songname="<%= song['songname'] %>">Play</a><br />
 			  <% end %>
 			<% end %>
 			<br />

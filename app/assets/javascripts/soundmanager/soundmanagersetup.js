@@ -10,3 +10,13 @@ soundManager.onready(function() {
   // Ready to use; soundManager.createSound() etc. can now be called.
   console.log('on');
 });
+
+soundManager.onerror = function() {
+  // SM2 could not start, no sound support, something broke etc. Handle gracefully.
+//TODO:: Create user-info for this.
+ console.log('you have an error -- no sound for you!');
+}
+
+soundManager.defaultOptions = {
+ autoLoad: true
+}
