@@ -24,15 +24,18 @@ class Event < ActiveRecord::Base
   		band << ', more...'
   	end
   	
-		listing += "<div"
+		listing += "<div class='"
     #if has songs, show headphones class
-		if self.songs.length < 1
-		  listing += " class='hassongs'"
+		if self.songs.length > 0
+		  listing += " hassongs"
 	  end
-    listing += ">#{headliner}"
+	  if b.length == 0
+  		listing += " singleact" 
+  	end
+    listing += " listing'><span class='headliner'>#{headliner}</span>"
     #if has supporting acts, list them
     if b.length > 0
-  		listing += "<br><span>#{band}</span>" 
+  		listing += "<p class='acts'>#{band}</p>" 
   	end
   	return listing
   end
