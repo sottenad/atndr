@@ -1,5 +1,6 @@
 var serviceurl = '/filters/index?json&';
 var lastSong = null;
+var currentSong = null;
 
 $(function(){
 	
@@ -74,33 +75,62 @@ function updateMap(){
 // all the relevent information from the data parameters on the element to soundmanager.
 function playSong(item){
 	var songurl = $(item).attr('data-songurl');
+	
 	var songname = $(item).attr('data-songname');
+	
+	var songid = songname.replace(/\s/g, "");
+	songid = songid.toLowerCase();
+	
 	//Now Create that song in soundmanager.	
 	var existingSong = soundManager.getSoundById(songname);
 	if(existingSong == null){
 		//No song in system, create new one
 		 var newSong = soundManager.createSound({
-		  id: songname,
+		  id: songid,
 		  url: songurl,
 		  autoLoad: true,
 		  autoPlay: false,
+		  playNext:true,
 		  volume: 50
 		});
+		newSong.songtitle = songname;
 		if(lastSong != null){
 			if(lastSong._iO.id != undefined){
-		    	soundManager.stop(lastSong._iO.id);
+		    	//soundManager.stop(lastSong._iO.id);
+		    	console.log(lastSong._iO.id)
+		    	var smlast = soundManager.getSoundById(lastSong._iO.id);
+		    	smlast.unload();
 			}
 	  	}
-	    newSong.play();
+	    newSong.play({
+	    	onplay:function(){
+	    		updatePlayer(this)
+	    	}
+	    });
 	    lastSong = newSong;	
 	}else{
 		//We've played this song before, just play it.
 		if(lastSong != null){
 			lastSong.stop();
+			lastSong.unload();
 		}
 		existingSong.play();
 		lastSong = existingSong();
 	}
 		
 }
+
+
+function updatePlayer(sound){
+	var sm = sound;
+	var playerUi = $('.player');
+	var playpause = $(playerUi).find('.playpause');
+	var playername = $(playerUi).find('.name').text(sound.songtitle);
+	var playershow = $(playerUi).find('.show');
+	
+	$(playpause).live('click', function(){
+		lastSong.togglePause();
+	});
+}
+
 
