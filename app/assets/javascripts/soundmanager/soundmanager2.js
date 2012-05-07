@@ -49,7 +49,7 @@ function SoundManager(smURL, smID) {
   // Top-level configuration options
 
   this.flashVersion = 8;             // flash build to use (8 or 9.) Some API features require 9.
-  this.debugMode = true;             // enable debugging output (console.log() with HTML fallback)
+  this.debugMode = false;             // enable debugging output (console.log() with HTML fallback)
   this.debugFlash = false;           // enable debugging output inside SWF, troubleshoot Flash/browser issues
   this.useConsole = true;            // use console.log() if available (otherwise, writes to #soundmanager-debug element)
   this.consoleOnly = true;           // if console is being used, do not create/write to #soundmanager-debug

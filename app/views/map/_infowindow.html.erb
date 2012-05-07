@@ -8,7 +8,7 @@
 			<br />
 			<% if (!object.songs.nil?) %>
 			  <% object.songs.each do |song| %>
-			  	<%= song['songname'] %>| <a href="#" class="playsong" data-songurl="<%= song['songurl'] %>" data-songname="<%= song['songname'] %>">Play</a><br />
+			  	<%= song['songname'] %>| <a href="#" class="playsong" data-songurl="<%= song['songurl'] %>" data-songname="<%= song['songname'].gsub(/\s+/, "") %>">Play</a><br />
 			  <% end %>
 			<% end %>
 			<br />

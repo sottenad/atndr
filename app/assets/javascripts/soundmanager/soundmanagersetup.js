@@ -20,3 +20,5 @@ soundManager.onerror = function() {
 soundManager.defaultOptions = {
  autoLoad: true
 }
+
+soundManager.preferFlash = false;

@@ -1,4 +1,5 @@
 var serviceurl = '/filters/index?json&';
+var lastSong = null;
 
 $(function(){
 	
@@ -70,21 +71,36 @@ function updateMap(){
 }
 
 //This is called from the .live event attached to play buttons in the infowindow, it simply passes
-// all the relevent information from the data-WHATEVER parameters on the element to soundmanager.
+// all the relevent information from the data parameters on the element to soundmanager.
 function playSong(item){
 	var songurl = $(item).attr('data-songurl');
 	var songname = $(item).attr('data-songname');
-	//Now Create that song in soundmanager.
-	 var newSong = soundManager.createSound({
-	  id: songname,
-	  url: songurl,
-	  autoLoad: true,
-	  autoPlay: false,
-	  onload: function() {
-	    this.play();
-	  },
-	  volume: 50
-	});
+	//Now Create that song in soundmanager.	
+	var existingSong = soundManager.getSoundById(songname);
+	if(existingSong == null){
+		//No song in system, create new one
+		 var newSong = soundManager.createSound({
+		  id: songname,
+		  url: songurl,
+		  autoLoad: true,
+		  autoPlay: false,
+		  volume: 50
+		});
+		if(lastSong != null){
+			if(lastSong._iO.id != undefined){
+		    	soundManager.stop(lastSong._iO.id);
+			}
+	  	}
+	    newSong.play();
+	    lastSong = newSong;	
+	}else{
+		//We've played this song before, just play it.
+		if(lastSong != null){
+			lastSong.stop();
+		}
+		existingSong.play();
+		lastSong = existingSong();
+	}
 		
 }
 
