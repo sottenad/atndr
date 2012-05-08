@@ -21,8 +21,12 @@ class Event < ActiveRecord::Base
   		band = b.join(',').to_s
   	else
   		band = b[0..2].join(',').to_s
+<<<<<<< HEAD
   		l=(b.length-3).to_s
   		band << ', '+l+' more...'
+=======
+  		band << ', more...'
+>>>>>>> master
   	end
   	
 		listing += "<div class='"
