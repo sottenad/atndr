@@ -38,7 +38,7 @@ $padding: 10px;
   @include rounded;
   @include box-shadow(0px, 0px, 5px);
   
-  .header{
+  .frame{
     background: $egg;
     padding: $padding;
   }
@@ -51,10 +51,22 @@ $padding: 10px;
       width: 90px;
     }
   }
+  #markers_div{
+    display: block;
+    overflow: scroll;
+    height: 100%;
+  }
   #markers_list{
-      overflow: scroll;
-      height: 100%;
+
       padding: 0px 5px;
+  }
+  #list-footer{
+    border-top: 1px solid $border-grey;
+    position: absolute;
+    bottom: 0px;
+    padding: 5px 10px;
+    font-size: 11px;
+    width: 100%;
   }
   li{
     margin: 2px;
