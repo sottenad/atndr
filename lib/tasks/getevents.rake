@@ -139,7 +139,7 @@ task :getevents_lastfm => [:environment] do
 			venue = item['venue']['name']
 			lat = item['venue']['location']['geo:point']['geo:lat']
 			long = item['venue']['location']['geo:point']['geo:long']			
-			starttime = Chronic.parse(item['startDate'])
+			starttime = item['startDate']
 			songs = Array.new
 			headliner = item['artists']['headliner']
 			genre = Array.new
@@ -161,12 +161,13 @@ task :getevents_lastfm => [:environment] do
 				genre = genre.uniq.join(', ')
 			end
 			
-			tmpDate = DateTime.strptime(starttime)
+			tmpDate = Time.parse(starttime)
+			tmpTime = tmpDate.strftime("%Y-%m-%d")
 		
 			#Create new event in the DB
 			event = Event.find_or_create_by_latitude_and_longitude_and_time(
 				:bands => bands,
-				:time => tmpDate.strftime("%Y-%m-%d"),
+				:time => tmpTime,
 				:location => location,
 				:venue => venue,
 				:latitude => lat,
@@ -174,21 +175,13 @@ task :getevents_lastfm => [:environment] do
 				:starttime => starttime,
 				:genre => genre,
 				:songs => songs,
-				:startdate => date
+				:startdate => starttime
 			)
 
-			puts headliner
+			puts 'added: '+headliner
 	end #end each item
-	
-	
-
-
-
-	end
-	
-	
-
-end
+  end #end each city
+end #end lastfmtask
   
  
 class Nokogiri::XML::Node
