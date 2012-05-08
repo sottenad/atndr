@@ -1,6 +1,6 @@
 == Welcome to Atndr
 
-
+View the running master branch at: http://simple-snow-9431.herokuapp.com/
 
 
 == Getting Started
@@ -15,3 +15,10 @@
        
 
 4. Visit the routing file in /config/routes.rb for more pages.
+
+
+==Bugs
+Taps Server Error: PGError: ERROR:  time zone displacement out of range:
+You must run the same version of ruby as heroku, otherwise db:push will fail
+    rvm 1.9.2
+should work to get your environment setup properly.
