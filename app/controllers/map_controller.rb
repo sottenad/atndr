@@ -3,7 +3,7 @@ class MapController < ApplicationController
 
   def index
 
-  	@json = Event.where("startdate >= ?", Date.today.to_date).order("startdate ASC").to_gmaps4rails do |event, marker|
+  	@json = Event.where("startdate >= ?", Date.today.to_date).order("time ASC").to_gmaps4rails do |event, marker|
   	 similar = Event.where("latitude = ? AND longitude = ?", event.latitude, event.longitude)
      marker.infowindow render_to_string(:partial => "/map/infowindow", :locals => { :object => event, :similar => similar})
 	

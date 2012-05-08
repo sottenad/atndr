@@ -1,4 +1,6 @@
 Atndr::Application.routes.draw do
+  resources :cities
+
   get "getsongs/index"
 
   get "map/index"
