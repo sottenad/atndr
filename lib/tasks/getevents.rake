@@ -6,7 +6,7 @@ require 'itunes'
 
 task :getevents_seattle => [:environment] do
 
-  for i in (1..7) #next 5 days
+  for i in (1..5) #next 5 days
 
     basedate = Date.current
     date = (basedate+i).to_s(:db)
@@ -40,10 +40,6 @@ task :getevents_seattle => [:environment] do
 		        bands = subnode.text.gsub(/\s+/, ' ').strip
 		        bandArr = bands.split(',')
 		        headliner = bandArr[0]
-		        #Trim off the annoying titles, indicated with a ':'
-		        if !headliner.index(':').nil?
-		        	headliner = headliner.slice((headliner.index(':')+1..headliner.length)).strip
-		        end
 		        bands = bandArr.join('|')
 		      end
 		      
