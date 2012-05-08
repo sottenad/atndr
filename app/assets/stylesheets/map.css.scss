@@ -58,9 +58,11 @@ $padding: 10px;
   }
   li{
     margin: 2px;
-    padding: 5px;
+    padding: 8px;
     background: $white;
     border: 1px solid $border-grey;
+    position: relative;
+    height: 31px;
   }
   li span{
   	display:block;
@@ -75,6 +77,7 @@ $padding: 10px;
   	background-position: 100% 0;
   	background-repeat:no-repeat;
   }
+<<<<<<< HEAD
   
 }
 
@@ -86,3 +89,18 @@ $padding: 10px;
 	height:60px;
 	background:#fff;
 	}
+=======
+  .singleact{
+    line-height: 31px;
+  }
+  .headliner{
+    font-weight: bold;
+    font-size: 16px;
+  }
+  .acts{
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 18px;
+  }
+}
+>>>>>>> abdcf926caf00c5d7c3f32947cfe24834f8aab3d
