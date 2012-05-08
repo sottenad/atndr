@@ -1,10 +1,14 @@
 <%= gmaps("markers" => {"data" => @json, "options" => {"list_container" => "markers_list", "auto_zoom" => false} }) %>
 <div id="shows">
-  <div class="header"><%= image_tag "ui/atndr-logo.png" %></div>
+  <div class="frame"><%= image_tag "ui/atndr-logo.png" %></div>
   <div id="filters">
   <input type="range" id="dateFilter" min=0 max=5 /><span id="displayDateVal"></span> DATE
   <input type="range" id="distFilter" min=1 max=10 /><span id="displayDistVal"></span> MILES
   </div>
-  
-  <ul id="markers_list">  </ul>
+  <div id="markers_div">
+    <ul id="markers_list">  </ul>
+    </div>
+  <div id="list-footer" class="frame">
+    Showing <span>30</span> shows in <span>Seattle</span> within <span>5 days</span>
+  </div>
 </div>
