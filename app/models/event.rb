@@ -11,25 +11,32 @@ class Event < ActiveRecord::Base
 	  "#{self.location}" 
 	end
 
-def gmaps4rails_sidebar
-
-	b = self.bands.split('|')
-	band = ''
-	
-	if b.length < 4
-		band = b.join(',').to_s
-	else
-		band = b[0..2].join(',').to_s
-		band << ', more...'
-	end
-	
-	if self.songs.length < 1
-		"<span>#{band}</span>" 
-	else
-		"<span class='hassongs'>#{band}</span>" 
-	end
-end
- 
-
-	
+  def gmaps4rails_sidebar
+    listing =""
+  	b = self.bands.split('|')
+  	band = ''
+  	#remove the first elements and call it headliner
+  	headliner = b.shift()	
+  	if b.length < 4
+  		band = b.join(',').to_s
+  	else
+  		band = b[0..2].join(',').to_s
+  		band << ', more...'
+  	end
+  	
+		listing += "<div class='"
+    #if has songs, show headphones class
+		if self.songs.length > 0
+		  listing += " hassongs"
+	  end
+	  if b.length == 0
+  		listing += " singleact" 
+  	end
+    listing += " listing'><span class='headliner'>#{headliner}</span>"
+    #if has supporting acts, list them
+    if b.length > 0
+  		listing += "<p class='acts'>#{band}</p>" 
+  	end
+  	return listing
+  end
 end
