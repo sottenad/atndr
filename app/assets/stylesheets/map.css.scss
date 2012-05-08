@@ -29,10 +29,8 @@ $padding: 10px;
   position: absolute;
   top: 10px;
   left: 10px;
-  height:90%;
-  min-height: 500px;
+  bottom: 90px;
   width: 355px;
-  display: block;
   overflow: hidden;
   background: transparentize($white, .15);
   @include rounded;
@@ -47,26 +45,34 @@ $padding: 10px;
     background: $gravy;
     margin-bottom: $padding/2;
     padding: $padding;
+    position: relative;
+    
     input[type="range"]{
       width: 90px;
     }
   }
   #markers_div{
     display: block;
-    overflow: scroll;
     height: 100%;
+    overflow: hidden;
+    position: relative;
   }
   #markers_list{
-
-      padding: 0px 5px;
+    overflow: auto;
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    bottom: 129px;
   }
   #list-footer{
     border-top: 1px solid $border-grey;
-    position: absolute;
-    bottom: 0px;
     padding: 5px 10px;
     font-size: 11px;
-    width: 100%;
+    position: absolute;
+    display: block;
+    bottom: 0px;
+    right: 0px;
+    left: 0px;
   }
   li{
     margin: 2px;
