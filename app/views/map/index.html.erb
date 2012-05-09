@@ -1,7 +1,9 @@
-<%= gmaps("markers" => {"data" => @json, "options" => {"list_container" => "markers_list", "auto_zoom" => false} }) %>
+<%= gmaps("map_options" => { "auto_zoom" => false, "auto_adjust"=>false}, "markers" => {"data" => @json, "options" => {"list_container" => "markers_list"} }) %>
 <div id="shows">
   <div class="header"><%= image_tag "ui/atndr-logo.png" %></div>
   <div id="filters">
+  <a href="#" id="refresh">Refresh</a>
+  <input type="input" id="searchinput" /><a href="#" id="searchbutton">Search</a>
   <input type="range" id="dateFilter" min=0 max=5 /><span id="displayDateVal"></span> DATE
   <input type="range" id="distFilter" min=1 max=10 /><span id="displayDistVal"></span> MILES
   </div>
@@ -14,3 +16,12 @@
 	<span class="name"></span>
 	<span class="show">View Show</span>
 </div>
+
+<% content_for :scripts do %>
+<script type="text/javascript" charset="utf-8">
+Gmaps.map.callback = function() {
+	//Callback for gmaps. Must be in the view :(
+	gmapsCallback();
+}
+</script>
+<% end %>

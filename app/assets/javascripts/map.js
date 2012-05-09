@@ -3,6 +3,8 @@ var lastSong = null;
 var currentSong = null;
 
 $(function(){
+
+	var gmap = Gmaps.map.map;
 	
 	var currentShow = 0;
 
@@ -29,6 +31,7 @@ $(function(){
 	$("#dateFilter, #distFilter").live('change', function(){
 		updateMap();
 	});
+
 	
 	if (navigator.geolocation) {
 	    //navigator.geolocation.getCurrentPosition(successFunction, errorFunction);
@@ -48,6 +51,46 @@ $(function(){
 	}	
 
 });
+
+
+//Fired from the view on gmaps4rails creation.
+function gmapsCallback(){
+	Gmaps.map.map_options.auto_zoom = false;
+	Gmaps.map.map_options.auto_adjust = false;
+
+	var userLocation = '<%= @userlocation %>';
+	if(userLocation != ''){
+		var geocoder = new google.maps.Geocoder();
+		geocoder.geocode({
+		    'address': userLocation
+		}, function(responses) {
+	    	if (responses && responses.length > 0) {
+	      		alert(responses[0].formatted_address);
+	    	} else {
+	    		alert('Cannot determine address at this location.');
+	    	}
+	  	});
+  	}else{
+		var res = prompt('Enter City');
+		var geocoder = new google.maps.Geocoder();
+		geocoder.geocode({
+			'address': res
+		}, function(responses) {
+	    	if (responses && responses.length > 0) {
+	      		var lat = responses[0].geometry.location.$a;
+	      		var lng  = responses[0].geometry.location.ab;	      		
+	      		var point = new google.maps.LatLng(lat, lng);
+				Gmaps.map.map.setCenter(point);
+				Gmaps.map.map.setZoom(13);
+
+	    	} else {
+	    		alert('Cannot determine address at this location.');
+	    	}
+	  	});
+  	}
+}
+
+
 
 //This grabs parameters from throughout the ui and the map and fires off a request to filters/json/ 
 // to get a new list of shows, then passes that to gmaps.map.replaceMarkers();
@@ -75,9 +118,7 @@ function updateMap(){
 // all the relevent information from the data parameters on the element to soundmanager.
 function playSong(item){
 	var songurl = $(item).attr('data-songurl');
-	
 	var songname = $(item).attr('data-songname');
-	
 	var songid = songname.replace(/\s/g, "");
 	songid = songid.toLowerCase();
 	
