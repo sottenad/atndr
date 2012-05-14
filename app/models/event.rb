@@ -21,12 +21,7 @@ class Event < ActiveRecord::Base
   		band = b.join(',').to_s
   	else
   		band = b[0..2].join(',').to_s
-<<<<<<< HEAD
   		band << ', more...'
-=======
-  		l=(b.length-3).to_s
-  		band << ', '+l+' more...'
->>>>>>> list-redux
   	end
   	
 		listing += "<div class='"
