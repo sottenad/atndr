@@ -29,16 +29,14 @@ $padding: 10px;
   position: absolute;
   top: 10px;
   left: 10px;
-  height:90%;
-  min-height: 500px;
+  bottom: 90px;
   width: 355px;
-  display: block;
   overflow: hidden;
   background: transparentize($white, .15);
   @include rounded;
   @include box-shadow(0px, 0px, 5px);
   
-  .header{
+  .frame{
     background: $egg;
     padding: $padding;
   }
@@ -47,14 +45,34 @@ $padding: 10px;
     background: $gravy;
     margin-bottom: $padding/2;
     padding: $padding;
+    position: relative;
+    
     input[type="range"]{
       width: 90px;
     }
   }
+  #markers_div{
+    display: block;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+  }
   #markers_list{
-      overflow: scroll;
-      height: 100%;
-      padding: 0px 5px;
+    overflow: auto;
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    bottom: 129px;
+  }
+  #list-footer{
+    border-top: 1px solid $border-grey;
+    padding: 5px 10px;
+    font-size: 11px;
+    position: absolute;
+    display: block;
+    bottom: 0px;
+    right: 0px;
+    left: 0px;
   }
   li{
     margin: 2px;
@@ -73,23 +91,10 @@ $padding: 10px;
     @include top-highlight
   }
   .hassongs{
-  	background-image:url(/assets/headphones.png);
-  	background-position: 100% 0;
+  	background-image:url(/assets/ui/list-play.png);
+  	background-position: 100% center;
   	background-repeat:no-repeat;
   }
-
-  
-}
-
-.player{
-	position:absolute;
-	bottom:0;
-	right:0;
-	width:400px; 
-	height:60px;
-	background:#fff;
-	}
-
   .singleact{
     line-height: 31px;
   }
@@ -102,5 +107,15 @@ $padding: 10px;
     font-size: 12px;
     line-height: 18px;
   }
+}
+
+.player{
+	position:absolute;
+	bottom:0;
+	right:0;
+	width:400px; 
+	height:60px;
+	background:#fff;
+	}
 
 
