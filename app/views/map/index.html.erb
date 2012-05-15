@@ -24,9 +24,16 @@
 </div>
 
 <div class="player">
-	<span class="playpause">play/pause</span>
-	<span class="name"></span>
-	<span class="show">View Show</span>
+  <div id="audio-controls">
+	  <span id="player-play" class="playpause"></span>
+	</div>
+	<div id="player-hud">
+	  <span class="name">Listen to a mix of upcoming artists</span>
+  </div>
+  <div id="player-window-controls">
+	  <span id="view-show" class="show"></span>
+	  <span id="player-size"></span>
+	</div>
 </div>
 
 <% content_for :scripts do %>

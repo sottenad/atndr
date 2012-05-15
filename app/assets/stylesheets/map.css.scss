@@ -7,6 +7,8 @@ $gravy: #515659;
 $border-grey: #f0f0f0;
 $teal: #56c9cc;
 $teal-border: #3ba6aa;
+$dk-grey: #383c3c;
+
 $padding: 10px;
 
 @mixin top-highlight{
@@ -137,11 +139,61 @@ $padding: 10px;
 
 .player{
 	position:absolute;
-	bottom:0;
-	right:0;
-	width:400px; 
-	height:60px;
-	background:#fff;
-	}
+	padding: $padding;
+	bottom: 6px;
+	right: 6px;
+	width: 400px; 
+  background: transparentize($dk-grey, .1);
+  @include rounded;
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, .4);
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, .4);
+  
+  div{ float: left}
+  
+    #player-play{
+      background-image:url(/assets/ui/player-play.png);
+      background-position: 100% center;
+      background-repeat:no-repeat;
+      height: 23px;
+      width: 23px;
+      display: block;
+      cursor: pointer;
+    }
+    #player-hud{
+      @include rounded;
+      -webkit-box-shadow: inset 0px -1px 3px 0px rgba(255, 255, 255, .3);
+      box-shadow: inset 0px -1px 3px 0px rgba(255, 255, 255, .3);
+      color: $white;
+      font-size: 11px;
+      padding: 3px 10px;
+      display: block;
+      width: 235px;
+      background: transparentize(#262727, .3);
+    }  
+}
+#player-window-controls{
+  float: right;
+}
+#view-show{
+	background-image:url(/assets/ui/find.png);
+	background-position: 100% center;
+	background-repeat:no-repeat;
+	height: 13px;
+	width: 9px;
+	display: block;
+	cursor: pointer;
+	float: left;
+	margin-right: 10px;
+}
+#player-size{
+	background-image:url(/assets/ui/maximize.png);
+	background-position: 100% center;
+	background-repeat:no-repeat;
+	height: 9px;
+	width: 9px;
+	display: block;
+	cursor: pointer;
+	float: left;
 
+}
 
