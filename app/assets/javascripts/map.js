@@ -1,6 +1,7 @@
 var serviceurl = '/filters/index?json&';
 var lastSong = null;
 var currentSong = null;
+var searchDist;
 
 $(function(){
   
@@ -11,18 +12,18 @@ $(function(){
   			value: 0,
   			slide: function(event, ui) {
   			  updateMap();
-  				$('#displayDateVal').val(ui.value);
   			}
   		});
   		
+  var distance = [1,2,5,10,15];
 	$('#distFilter').slider({
-  			min: 1,
-  			max: 10,
+  			min: 0,
+  			max: 4,
   			step: 1,
-  			value: 1,
+  			value: 0,
   			slide: function(event, ui) {
   			  updateMap();
-  				$('#displayDistVal').val(ui.value);
+  			  searchDist = distance[ui.value];
   			}
   	});
   		
@@ -118,7 +119,7 @@ function updateMap(){
 		var lat = Gmaps.map.map.center.$a;
 		var long = Gmaps.map.map.center.ab;
     var future = $('#dateFilter').slider('value');
-    var dist = $('#distFilter').slider('value');
+    var dist = searchDist;
 		var qs = 'lat='+lat+'&long='+long+'&dist='+dist+'&future='+future;
 		var totalUrl = serviceurl+qs;
 		var new_markers = $.getJSON(totalUrl, function(data) {

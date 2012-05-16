@@ -25,8 +25,30 @@ $padding: 10px;
     -moz-box-shadow: $top $left $blur $color;
     box-shadow: $top $left $blur $color;
 }
+@mixin inner-shadow{
+  -webkit-box-shadow: inset 0px 0px 4px 0px rgba(0, 0, 0, .3);
+  box-shadow: inset 0px 0px 4px 0px rgba(0, 0, 0, .3);
+}
 
 .hide{display:none}
+#user{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+.circle{
+  height:38px;
+  width:38px;
+  @include inner-shadow;
+  overflow: hidden;
+  -webkit-border-radius: 50em;
+  -moz-border-radius: 50em;
+  border-radius: 50em;
+  border: 1px solid $white;
+	background-image:url(avatar.jpeg);
+	background-size: 40px;
+	background-repeat: no-repeat;
+}
 #shows{
   position: absolute;
   top: 10px;
@@ -69,9 +91,15 @@ $padding: 10px;
     position: relative;
     font-size: 12px;
     font-variant: small-caps;
-    div{
+    .filterSection{
       float: left;
       margin-left: 45px;
+      
+      span{
+        display: block;
+        width: 20px;
+        float: left;
+      }
     }
     .slider{
       width: 90px;
@@ -84,10 +112,8 @@ $padding: 10px;
       background: url(/assets/ui/slider-handle.png) 100% center no-repeat;
       margin-top: -3px;
       border: none;
-    }
-    input[type="range"]{
-      display: none;
-      width: 90px;
+      outline: none;
+      cursor: pointer;
     }
   }
   #markers_div{

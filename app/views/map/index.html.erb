@@ -1,5 +1,9 @@
 <%= gmaps("map_options" => { "auto_zoom" => false, "auto_adjust"=>false}, "markers" => {"data" => @json, "options" => {"list_container" => "markers_list"} }) %>
 
+<div id="user">
+  <div class='circle'>
+  </div>
+</div>
 
 <div id="shows">
   <div class="frame"><%= image_tag "ui/atndr-logo.png" %>
@@ -8,17 +12,15 @@
     <div class="clearfix"></div>
   </div>
   <div id="filters" class="clearfix">
-    <div>
-      date<br />
+    <div  class="filterSection">
+      days away<br />
       <div class="slider" id="dateFilter"></div>
-      <!-- <input type="range" id="dateFilter" min=0 max=5 /> -->
-      <span id="displayDateVal"></span>
+      <%= image_tag "ui/days-away.png" %>
     </div>
-    <div>
-      miles<br />
+    <div class="filterSection">
+      miles away<br />
       <div class="slider" id="distFilter"></div>
-      <!-- <input type="range" id="distFilter" min=1 max=10 /> -->
-      <span id="displayDistVal"></span>
+      <%= image_tag "ui/miles-away.png" %>
     </div>
   </div>
   <div id="markers_div">
