@@ -1,4 +1,6 @@
 <%= gmaps("map_options" => { "auto_zoom" => false, "auto_adjust"=>false}, "markers" => {"data" => @json, "options" => {"list_container" => "markers_list"} }) %>
+
+
 <div id="shows">
   <div class="frame"><%= image_tag "ui/atndr-logo.png" %>
     <a href="#" id="searchbutton"></a>
@@ -8,11 +10,15 @@
   <div id="filters" class="clearfix">
     <div>
       date<br />
-      <input type="range" id="dateFilter" min=0 max=5 /><span id="displayDateVal">
+      <div class="slider" id="dateFilter"></div>
+      <!-- <input type="range" id="dateFilter" min=0 max=5 /> -->
+      <span id="displayDateVal"></span>
     </div>
     <div>
       miles<br />
-      <input type="range" id="distFilter" min=1 max=10 /><span id="displayDistVal">
+      <div class="slider" id="distFilter"></div>
+      <!-- <input type="range" id="distFilter" min=1 max=10 /> -->
+      <span id="displayDistVal"></span>
     </div>
   </div>
   <div id="markers_div">
@@ -22,6 +28,7 @@
     Showing <span>30</span> shows in <span>Seattle</span> within <span>5 days</span>
   </div>
 </div>
+
 
 <div class="player">
   <div id="audio-controls">

@@ -73,8 +73,20 @@ $padding: 10px;
       float: left;
       margin-left: 45px;
     }
-    
+    .slider{
+      width: 90px;
+      height: 3px;
+    }
+    .ui-widget-content{
+      background: #bababa;  
+    }
+    .ui-slider-handle{
+      background: url(/assets/ui/slider-handle.png) 100% center no-repeat;
+      margin-top: -3px;
+      border: none;
+    }
     input[type="range"]{
+      display: none;
       width: 90px;
     }
   }

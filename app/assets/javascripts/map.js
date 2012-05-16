@@ -3,9 +3,30 @@ var lastSong = null;
 var currentSong = null;
 
 $(function(){
-
+  
+	$('#dateFilter').slider({
+  			min: 0,
+  			max: 5,
+  			step: 1,
+  			value: 0,
+  			slide: function(event, ui) {
+  			  updateMap();
+  				$('#displayDateVal').val(ui.value);
+  			}
+  		});
+  		
+	$('#distFilter').slider({
+  			min: 1,
+  			max: 10,
+  			step: 1,
+  			value: 1,
+  			slide: function(event, ui) {
+  			  updateMap();
+  				$('#displayDistVal').val(ui.value);
+  			}
+  	});
+  		
 	var gmap = Gmaps.map.map;
-	
 	var currentShow = 0;
 
 	$('.nextshow').live('click', function(){
@@ -27,12 +48,10 @@ $(function(){
 		playSong(this);
 	})
 	
-	
-	$("#dateFilter, #distFilter").live('change', function(){
-		updateMap();
-	});
+  $("#dateFilter, #distFilter").live('change', function(){
+   updateMap();
+  });
 
-	
 	if (navigator.geolocation) {
 	    //navigator.geolocation.getCurrentPosition(successFunction, errorFunction);
 	} 
@@ -67,7 +86,7 @@ function gmapsCallback(){
 	    	if (responses && responses.length > 0) {
 	      		alert(responses[0].formatted_address);
 	    	} else {
-	    		alert('Cannot determine address at this location.');
+	    		//alert('Cannot determine address at this location.');
 	    	}
 	  	});
   	}else{
@@ -98,8 +117,8 @@ function updateMap(){
 		//Construct url
 		var lat = Gmaps.map.map.center.$a;
 		var long = Gmaps.map.map.center.ab;
-		var future = $('#dateFilter').val();
-		var dist = $('#distFilter').val();
+    var future = $('#dateFilter').slider('value');
+    var dist = $('#distFilter').slider('value');
 		var qs = 'lat='+lat+'&long='+long+'&dist='+dist+'&future='+future;
 		var totalUrl = serviceurl+qs;
 		var new_markers = $.getJSON(totalUrl, function(data) {
@@ -110,8 +129,8 @@ function updateMap(){
 		var today = new Date();
 		var cutoffDate = new Date();
 		cutoffDate.setDate(today.getDate() + parseInt(future)	);
-		$('#displayDateVal').text((cutoffDate.getMonth()+1)+'-'+cutoffDate.getDate());
-		$('#displayDistVal').text(dist);
+    $('#displayDateVal').text((cutoffDate.getMonth()+1)+'-'+cutoffDate.getDate());
+    $('#displayDistVal').text(dist);
 }
 
 //This is called from the .live event attached to play buttons in the infowindow, it simply passes
