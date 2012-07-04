@@ -1,12 +1,11 @@
 jQuery(document).ready ($) ->  
   class ApplicationRouter extends Backbone.Router
     routes:
-      ''          : 'test'
+      ''          : 'index'
 
-    test: ->
+    index: ->
       console.log
-      appview = new Atndr.Views.TestView({ collection: new Atndr.Collections.Tests() })
-      #appview.render()    
+      appview = new Atndr.Views.MapView({ collection: new Atndr.Collections.Events() })
 
   # initialize the controller and history
   Atndr.router = new ApplicationRouter()

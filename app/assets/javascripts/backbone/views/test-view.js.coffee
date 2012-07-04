@@ -1,8 +1,7 @@
-class Atndr.Views.TestView extends Backbone.View
+class Atndr.Views.MapView extends Backbone.View
   el : '#container'
 
   initialize : ->
-    console.log('testView init')
     _.bindAll(this, 'render')
     this.collection.fetch()
     this.collection.bind('reset', this.render)

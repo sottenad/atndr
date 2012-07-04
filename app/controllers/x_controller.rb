@@ -1,2 +1,0 @@
-class XController < ApplicationController
-end

@@ -1,5 +1,4 @@
-class Atndr.Models.Test extends Backbone.Model
-  console.log('Test model')
+class Atndr.Models.Event extends Backbone.Model
   defaults:
     bands: 'Boshi'
     time: '12'

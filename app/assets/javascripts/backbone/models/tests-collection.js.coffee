@@ -1,4 +1,3 @@
-class Atndr.Collections.Tests extends Backbone.Collection
-  console.log('Tests collection')
-  model : Atndr.Models.Test
+class Atndr.Collections.Events extends Backbone.Collection
+  model : Atndr.Models.Event
   url : '/events.json'

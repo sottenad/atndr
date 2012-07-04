@@ -8,7 +8,7 @@ soundManager.useFlashBlock = false; // optionally, enable when you're ready to d
 */
 soundManager.onready(function() {
   // Ready to use; soundManager.createSound() etc. can now be called.
-  console.log('on');
+  //console.log('on');
 });
 
 soundManager.onerror = function() {
