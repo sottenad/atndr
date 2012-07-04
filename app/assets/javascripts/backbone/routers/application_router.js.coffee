@@ -4,7 +4,9 @@ jQuery(document).ready ($) ->
       ''          : 'test'
 
     test: ->
-      appview = new Atndr.Views.TestView({ collection: new Atndr.Collections.Tests() })    
+      console.log
+      appview = new Atndr.Views.TestView({ collection: new Atndr.Collections.Tests() })
+      #appview.render()    
 
   # initialize the controller and history
   Atndr.router = new ApplicationRouter()
